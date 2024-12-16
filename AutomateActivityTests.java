@@ -77,333 +77,190 @@ public class AutomateActivityTests {
             case "Cricket" -> {
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[1]")).click();
                 switch (s1) {
-                    case "Retrieval" -> {
-                        int index1 = 1;
-                        activity2(driver, laps, index1);
-                    }
-                    case "RH 4" -> {
-                        Thread.sleep(1000);
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 6" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 5;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 4" -> {
-                        int index1 = 6;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "Retrieval" -> activity2(driver, laps, 1);
+                    case "RH 4" -> activity(t1, driver, laps, 4);
+                    case "RH 6" -> activity(t1, driver, laps, 2);
+                    case "RW 4" -> activity(t1, driver, laps, 5);
+                    case "RW 6" -> activity(t1, driver, laps, 3);
+                    case "SH 4" -> activity(t1, driver, laps, 6);
                     case "SH 6" -> {
-                        int index1 = 2;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 2);
                     }
                     case "SW 4" -> {
-                        int index1 = 5;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 5);
                     }
                     case "SW 6" -> {
-                        int index1 = 3;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 3);
                     }
                 }
             }
             case "Tennis" -> {
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[2]")).click();
                 switch (s1) {
-                    case "RH 4" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 6" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 5;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 4" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 6" -> {
-                        int index1 = 6;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1);
+                    case "RH 6" -> activity(t1, driver, laps, 4);
+                    case "RW 4" -> activity(t1, driver, laps, 2);
+                    case "RW 6" -> activity(t1, driver, laps, 5);
+                    case "SH 4" -> activity(t1, driver, laps, 3);
+                    case "SH 6" -> activity(t1, driver, laps, 6);
                     case "SW 4" -> {
-                        int index1 = 3;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 3);
                     }
                     case "SW 6" -> {
-                        int index1 = 6;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 6);
                     }
                 }
             }
             case "Badminton" -> {
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[3]")).click();
                 switch (s1) {
-                    case "Six-Point Footwork Sequential" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "Six-Point Footwork Random" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 4" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 6" -> {
-                        int index1 = 5;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 6;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "Six-Point Footwork Sequential" -> activity(t1, driver, laps, 1);
+                    case "Six-Point Footwork Random" -> activity(t1, driver, laps, 4);
+                    case "RH 4" -> activity(t1, driver, laps, 2);
+                    case "RH 6" -> activity(t1, driver, laps, 5);
+                    case "RW 4" -> activity(t1, driver, laps, 3);
+                    case "RW 6" -> activity(t1, driver, laps, 6);
                     case "SH 4" -> {
-                        int index1 = 1;
                         scroll(driver);
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 1);
                     }
                     case "SH 6" -> {
-                        int index1 = 4;
                         scroll(driver);
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 4);
                     }
                     case "SW 4" -> {
-                        int index1 = 2;
                         scroll(driver);
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 2);
                     }
                     case "SW 6" -> {
-                        int index1 = 5;
                         scroll(driver);
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 5);
                     }
                     case "BD Hit 1" -> {
-                        int index1 = 3;
                         scroll(driver);
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 3);
                     }
                     case "BD Wave 1" -> {
-                        int index1 = 6;
                         scroll(driver);
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 6);
                     }
                 }
             }
             case "School Fitness" -> {
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[4]")).click();
                 switch (s1) {
-                    case "RH 4" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 6" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 5;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 4" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 6" -> {
-                        int index1 = 6;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SW 4" -> {
-                        int index1 = 3;
-                        scroll(driver);
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1);
+                    case "RH 6" -> activity(t1, driver, laps, 4);
+                    case "RW 4" -> activity(t1, driver, laps, 2);
+                    case "RW 6" -> activity(t1, driver, laps, 5);
+                    case "SH 4" -> activity(t1, driver, laps, 3);
+                    case "SH 6" -> activity(t1, driver, laps, 6);
+                    case "SW 4" -> activity(t1, driver, laps, 3);
                     case "SW 6" -> {
-                        int index1 = 6;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 6);
                     }
                 }
             }
             case "Soccer" -> {
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[5]")).click();
                 switch (s1) {
-                    case "RH 4" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 6" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 5;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 4" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 6" -> {
-                        int index1 = 6;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1);
+                    case "RH 6" -> activity(t1, driver, laps, 4);
+                    case "RW 4" -> activity(t1, driver, laps, 2);
+                    case "RW 6" -> activity(t1, driver, laps, 5);
+                    case "SH 4" -> activity(t1, driver, laps, 3);
+                    case "SH 6" -> activity(t1, driver, laps, 6);
                     case "SW 4" -> {
-                        int index1 = 3;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 3);
                     }
                     case "SW 6" -> {
-                        int index1 = 6;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 6);
                     }
                 }
             }
             case "Physiotherapy" -> {
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[6]")).click();
-                if (s1.equals("PT Sequential Laps")) {
-                    int index1 = 1;
-                    activity2(driver, laps, index1);
-                } else if (s1.equals("RH 6")) {
-                    int index1 = 4;
-                    activity(t1, driver, laps, index1);
-                } else if (s1.equals("RW 6")) {
-                    int index1 = 2;
-                    activity(t1, driver, laps, index1);
-                } else if (s1.equals("SH 6")) {
-                    int index1 = 5;
-                    activity(t1, driver, laps, index1);
-                } else if (s1.equals("SW 6")) {
-                    int index1 = 3;
-                    activity(t1, driver, laps, index1);
-                } else if (s1.equals("Sequential Circle Hit 4")) {
-                    int index1 = 6;
-                    activity(t1, driver, laps, index1);
-                } else if (s1.equals("Sequential Circle Wave 4")) {
-                    String Element1 = "PT Sequential Circle Wave 4";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element1 + "\"))"
-                    ));
-                    list3.click();
-                    activity1(t1, driver, laps);
-                } else if (s1.equals("RH 6")) {
-                    String Element2 = "PT RH 6";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element2 + "\"))"
-                    ));
-                    list3.click();
-                    activity1(t1, driver, laps);
-                } else if (s1.equals("RW 6")) {
-                    String Element3 = "PT RW 6";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element3 + "\"))"
-                    ));
-                    list3.click();
-                    activity1(t1, driver, laps);
-                } else if (s1.equals("SW 6")) {
-                    String Element4 = "PT SW 6";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element4 + "\"))"
-                    ));
-                    list3.click();
-                    activity1(t1, driver, laps);
-                } else if (s1.equals("Sequential Circular Hit 4")) {
-                    String Element5 = "PT Sequential Circle Hit 4";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element5 + "\"))"
-                    ));
-                    list3.click();
-                    activity3(driver, laps);
-                } else if (s1.equals("Sequential Circular Wave 6")) {
-                    String Element6 = "PT Sequential Circle Wave 6";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element6 + "\"))"
-                    ));
-                    list3.click();
-                    activity3(driver, laps);
-                } else if (s1.equals("T Test")) {
-                    String Element7 = "PT T Test";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element7 + "\"))"
-                    ));
-                    list3.click();
-                    activity3(driver, laps);
-                } else if (s1.equals("3 Cone Wave")) {
-                    String Element8 = "3 Cone Shuttle Drill Wave (L Drill)";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element8 + "\"))"
-                    ));
-                    list3.click();
-                    activity3(driver, laps);
-                } else if (s1.equals("10 Meter")) {
-                    String Element8 = "Ten Meters Agility Shuttle";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element8 + "\"))"
-                    ));
-                    list3.click();
-                    activity3(driver, laps);
-                } else if (s1.equals("SEMO Wave")) {
-                    String Element9 = "SEMO Agility Drill Wave";
-                    WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element9 + "\"))"
-                    ));
-                    list3.click();
-                    activity3(driver, laps);
-                } else if (s1.equals("Pod Colour 4")) {
-                    String Element10 = "Four Pod color Memory Test Tap";
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element10 + "\"))"
-                    ));
-                    activity3(driver, laps);
-                } else if (s1.equals("Pod Colour 6")) {
-                    String Element11 = "Six Pod color Memory Test Tap";
-                    driver.findElement(AppiumBy.androidUIAutomator(
-                            "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element11 + "\"))"
-                    ));
-                    activity3(driver, laps);
+                switch (s1) {
+                    case "PT Sequential Laps" -> activity2(driver, laps, 1);
+                    case "RH 6" -> activity(t1, driver, laps, 4);
+                    case "RW 6" -> activity(t1, driver, laps, 2);
+                    case "SH 6" -> activity(t1, driver, laps, 5);
+                    case "SW 6" -> activity(t1, driver, laps, 3);
+                    case "Sequential Circle Hit 4" -> activity(t1, driver, laps, 6);
+                    case "Sequential Circle Wave 4" -> {
+                        String Element1 = "PT Sequential Circle Wave 4";
+                        WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
+                                "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element1 + "\"))"
+                        ));
+                        list3.click();
+                        activity1(t1, driver, laps);
+                    }
+
+                    case "T Test" -> {
+                        String Element7 = "PT T Test";
+                        WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
+                                "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element7 + "\"))"
+                        ));
+                        list3.click();
+                        activity3(driver, laps);
+                    }
+                    case "3 Cone Wave" -> {
+                        String Element8 = "3 Cone Shuttle Drill Wave (L Drill)";
+                        WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
+                                "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element8 + "\"))"
+                        ));
+                        list3.click();
+                        activity3(driver, laps);
+                    }
+                    case "10 Meter" -> {
+                        String Element8 = "Ten Meters Agility Shuttle";
+                        WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
+                                "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element8 + "\"))"
+                        ));
+                        list3.click();
+                        activity3(driver, laps);
+                    }
+                    case "SEMO Wave" -> {
+                        String Element9 = "SEMO Agility Drill Wave";
+                        WebElement list3 = driver.findElement(AppiumBy.androidUIAutomator(
+                                "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element9 + "\"))"
+                        ));
+                        list3.click();
+                        activity3(driver, laps);
+                    }
+                    case "Pod Colour 4" -> {
+                        String Element10 = "Four Pod color Memory Test Tap";
+                        driver.findElement(AppiumBy.androidUIAutomator(
+                                "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element10 + "\"))"
+                        ));
+                        activity3(driver, laps);
+                    }
+                    case "Pod Colour 6" -> {
+                        String Element11 = "Six Pod color Memory Test Tap";
+                        driver.findElement(AppiumBy.androidUIAutomator(
+                                "new UiScrollable(new UiSelector().scrollable(true).orientation(0)).scrollIntoView(new UiSelector().text(\"" + Element11 + "\"))"
+                        ));
+                        activity3(driver, laps);
+                    }
+                    default -> {
+                        // Handle any case where no match occurs
+                    }
                 }
+
             }
             case "Military Training" -> {
                 driver.findElement(AppiumBy.androidUIAutomator(
@@ -411,39 +268,19 @@ public class AutomateActivityTests {
                 ));
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[1]")).click();
                 switch (s1) {
-                    case "RH 4" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 6" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 5;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 4" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 6" -> {
-                        int index1 = 6;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1);
+                    case "RH 6" -> activity(t1, driver, laps, 4);
+                    case "RW 4" -> activity(t1, driver, laps, 2);
+                    case "RW 6" -> activity(t1, driver, laps, 5);
+                    case "SH 4" -> activity(t1, driver, laps, 3);
+                    case "SH 6" -> activity(t1, driver, laps, 6);
                     case "SW 4" -> {
-                        int index1 = 3;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 3);
                     }
                     case "SW 6" -> {
-                        int index1 = 6;
                         scroll(driver);
-                        activity(t1, driver, laps, index1);
+                        activity(t1, driver, laps, 6);
                     }
                 }
             }
@@ -453,22 +290,10 @@ public class AutomateActivityTests {
                 ));
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[2]")).click();
                 switch (s1) {
-                    case "SH 6" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SH 4" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 6" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RH 4" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "SH 6" -> activity(t1, driver, laps, 1);
+                    case "SH 4" -> activity(t1, driver, laps, 3);
+                    case "RH 6" -> activity(t1, driver, laps, 2);
+                    case "RH 4" -> activity(t1, driver, laps, 4);
                 }
             }
             case "Auditory Reflex Training" -> {
@@ -477,22 +302,10 @@ public class AutomateActivityTests {
                 ));
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[3]")).click();
                 switch (s1) {
-                    case "SW 4" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SW 6" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "SW 4" -> activity(t1, driver, laps, 1);
+                    case "SW 6" -> activity(t1, driver, laps, 3);
+                    case "RW 4" -> activity(t1, driver, laps, 2);
+                    case "RW 6" -> activity(t1, driver, laps, 4);
                 }
             }
             case "Audiblaze Reflex Training" -> {
@@ -501,22 +314,10 @@ public class AutomateActivityTests {
                 ));
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[4]")).click();
                 switch (s1) {
-                    case "SW 4" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "SW 6" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 4" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "RW 6" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "SW 4" -> activity(t1, driver, laps, 1);
+                    case "SW 6" -> activity(t1, driver, laps, 3);
+                    case "RW 4" -> activity(t1, driver, laps, 2);
+                    case "RW 6" -> activity(t1, driver, laps, 4);
                 }
             }
             case "New Activities" -> {
@@ -525,26 +326,11 @@ public class AutomateActivityTests {
                 ));
                 driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[5]")).click();
                 switch (s1) {
-                    case "FH 6" -> {
-                        int index1 = 1;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "FW 6" -> {
-                        int index1 = 4;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "OH 6" -> {
-                        int index1 = 2;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "OW 6" -> {
-                        int index1 = 5;
-                        activity(t1, driver, laps, index1);
-                    }
-                    case "Back to home Hit 6" -> {
-                        int index1 = 3;
-                        activity(t1, driver, laps, index1);
-                    }
+                    case "FH 6" -> activity(t1, driver, laps, 1);
+                    case "FW 6" -> activity(t1, driver, laps, 4);
+                    case "OH 6" -> activity(t1, driver, laps, 2);
+                    case "OW 6" -> activity(t1, driver, laps, 5);
+                    case "Back to home Hit 6" -> activity(t1, driver, laps, 3);
                 }
             }
             case "Table Tennis" -> {
@@ -702,9 +488,6 @@ public class AutomateActivityTests {
                 .moveTo(PointOption.point(endX, startY))    // Move to the left side of the element
                 .release()
                 .perform();  // Perform the swipe action
-
-
-
     }
 
     @AfterAll
