@@ -1,0 +1,12 @@
+test_case,no_of_pods,category,act_type
+1,1,BD,H
+2,2,CK,W
+3,3,CK,H
+4,4,NA,W
+5,6,Boxing,H
+6,4,ABRT,W
+7,6,ART,H
+8,3,MT,W
+9,8,SO,W
+10,10,TN,H
+11,4,Boxing,W
