@@ -107,8 +107,4 @@ This code automates the process of adding a new player profile in the Dashpod ap
 
 ## Contributing
 
-Feel free to fork the repository, submit issues, or create pull requests if you have suggestions or improvements!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Feel free to fork the repository, submit issues, or create pull requests if you have suggestions or improvements.
