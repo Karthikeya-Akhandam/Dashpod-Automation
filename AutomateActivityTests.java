@@ -383,10 +383,24 @@ public class AutomateActivityTests {
         driver.findElement(By.xpath("(//android.view.ViewGroup[@resource-id=\"com.dashpod.sportsandfitness:id/lyt_profile\"])[2]")).click();
         driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btn_start\"]")).click();
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(300));
-        WebElement close = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btndialog\"]")));
-        close.click();
-        driver.findElement(By.xpath("//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/toolbarIcon\"]")).click();
-        Thread.sleep(2000);
+        WebElement analysis = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btnViewAnalysis\"]")));
+        analysis.click();
+
+        WebElement tableLayout = driver.findElement(By.id("com.dashpod.sportsandfitness:id/tbllayout"));
+
+        // Locate all the rows inside the TableLayout (assuming TableRow is used)
+        List<WebElement> rows = tableLayout.findElements(By.xpath("//android.widget.TableLayout[@resource-id=\"com.dashpod.sportsandfitness:id/tbllayout\"]/android.widget.TableRow[2]"));
+
+        // Loop through each row and extract the cell values
+        for (WebElement row : rows) {
+            // Find all cells within the row (assuming cells are TextView)
+            List<WebElement> cells = row.findElements(By.className("android.widget.TextView"));
+            WebElement lastCell = cells.get(cells.size() - 1);
+            int poor = (int)Double.parseDouble(lastCell.getText());
+
+            driver.findElement(By.xpath("//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/toolbarIcon\"]")).click();
+            Assert.assertEquals(miss,poor);
+        }
 
     }
 
