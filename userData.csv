@@ -1,2 +1,2 @@
 username,email,countrycode,phonenumber,password,profile,firstname,lastname,genderex,dateofbirth,dimhex,heightex,dimwex,weightex,freqex,aoiex,interestex
-Karthik,karthikeyasrm6@gmail.com,+91,7893853985,Karthikeya@123,Individual,Karthikeya,Akhandam,M,04 Sep 2005,Cm,250,Lb,80,Weekly,Fitness,Cricket
+user_name,email_id,country_code(with+),phone_number,password,Individual,first_name,last_name,M,DD 3_Letters_month,Cm,250,Lb,80,Weekly,Fitness,Cricket
