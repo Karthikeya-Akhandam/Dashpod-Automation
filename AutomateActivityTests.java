@@ -10,7 +10,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
+import javax.swing.*;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -31,29 +33,13 @@ public class AutomateActivityTests {
         capabilities.setCapability("appium:platformName", "Android");
         capabilities.setCapability("appium:automationName", "uiautomator2");
         capabilities.setCapability("appium:platformVersion", "10.0");
-        //capabilities.setCapability("appium:appPackage", "com.dashpod.sportsandfitness");
-        //capabilities.setCapability("appium:appActivity", "com.dashpod.sportsandfitness.ui.activities.SplashScreenActivity");
 
         URL url = URI.create("http://127.0.0.1:4723/wd/hub").toURL();
-        driver = new AndroidDriver(url, capabilities);
-        //Thread.sleep(1000);
-        //driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]")).click();
-        //Thread.sleep(1000);
-        //driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btn_login\"]")).click();
-        //driver.findElement(By.xpath("//android.widget.EditText[@resource-id=\"com.dashpod.sportsandfitness:id/loginuser\"]")).sendKeys("Karthik");
-        //driver.findElement(By.xpath("//android.widget.EditText[@resource-id=\"com.dashpod.sportsandfitness:id/loginpassword\"]")).sendKeys("Karthikeya@123");
-        //driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btn_login3\"]")).click();
-        //Thread.sleep(1000);
-        //Thread.sleep(90000);
-    }
-
-    @AfterEach
-    public void afterEachTest() {
-        driver.findElement(By.xpath("//android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/navigation_bar_item_large_label_view\"]")).click();
+        driver = new AndroidDriver (url, capabilities);
     }
 
     @TestFactory
-    public List<DynamicTest> testSignupProcesses() throws IOException, CsvException {
+    public List<DynamicTest> testActivityProcesses() throws IOException, CsvException {
         // Read the CSV file and create a list of tests
         CSVReader reader = new CSVReader(new FileReader("C:\\Users\\Karthikeya Akhandam\\Documents\\BlazeTech\\activityData2.csv"));
         List<String[]> lines = reader.readAll();
@@ -62,9 +48,17 @@ public class AutomateActivityTests {
         return lines.stream()
                 .skip(1) // Skip the header row
                 .map(line -> DynamicTest.dynamicTest("Activity test for " + line[0] + " " + line[1],
-                        () -> testActivityProcess(
-                                line[0], line[1], line[2], line[3], line[4]
-                        )))
+                        () -> {
+                            /*// Skip the third test (index 0 to 19 based on csv file index)
+                            if (lines.indexOf(line) <= 1 && lines.indexOf(line) <= 21) {
+                                System.out.println("Skipping test for " + line[0] + " " + line[1]);
+                                return; // Skip this test
+                            }
+                            //End of skip*/
+                            testActivityProcess(
+                                    line[0], line[1], line[2], line[3], line[4]
+                            );
+                        }))
                 .toList();
     }
 
@@ -76,278 +70,188 @@ public class AutomateActivityTests {
 
         switch (s) {
             case "Cricket" -> {
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[1]")).click();
                 switch (s1) {
-                    case "Retrieval" -> activity2(driver, laps, 1);
-                    case "RH 4" -> activity(t1, driver, laps, 4, miss);
-                    case "RH 6" -> activity(t1, driver, laps, 2, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 5, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 3, miss);
-                    case "SH 4" -> activity(t1, driver, laps, 6, miss);
-                    case "SH 6" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 2, miss);
-                    }
-                    case "SW 4" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 5, miss);
-                    }
-                    case "SW 6" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 3, miss);
-                    }
+                    case "Retrieval" -> activity2(driver, laps, 1, 1, 0);
+                    case "RH 4" -> activity(t1, driver, laps, 4, miss, 1, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 2, miss, 1, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 5, miss, 1, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 3, miss, 1, 0);
+                    case "SH 4" -> activity(t1, driver, laps, 6, miss, 1, 0);
+                    case "SH 6" -> activity(t1, driver, laps, 2, miss, 1, 1);
+                    case "SW 4" -> activity(t1, driver, laps, 5, miss, 1, 1);
+                    case "SW 6" -> activity(t1, driver, laps, 3, miss, 1, 1);
                 }
             }
             case "Tennis" -> {
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[2]")).click();
                 switch (s1) {
-                    case "RH 4" -> activity(t1, driver, laps, 1, miss);
-                    case "RH 6" -> activity(t1, driver, laps, 4, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 2, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 5, miss);
-                    case "SH 4" -> activity(t1, driver, laps, 3, miss);
-                    case "SH 6" -> activity(t1, driver, laps, 6, miss);
-                    case "SW 4" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 3, miss);
-                    }
-                    case "SW 6" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 6, miss);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1, miss, 2, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 4, miss, 2, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 2, miss, 2, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 5, miss, 2, 0);
+                    case "SH 4" -> activity(t1, driver, laps, 3, miss, 2, 0);
+                    case "SH 6" -> activity(t1, driver, laps, 6, miss, 2, 0);
+                    case "SW 4" -> activity(t1, driver, laps, 3, miss, 2, 1);
+                    case "SW 6" -> activity(t1, driver, laps, 6, miss, 2, 1);
                 }
             }
             case "Badminton" -> {
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[3]")).click();
                 switch (s1) {
-                    case "Six-Point Footwork Sequential" -> activity(t1, driver, laps, 1, miss);
-                    case "Six-Point Footwork Random" -> activity(t1, driver, laps, 4, miss);
-                    case "RH 4" -> activity(t1, driver, laps, 2, miss);
-                    case "RH 6" -> activity(t1, driver, laps, 5, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 3, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 6, miss);
-                    case "SH 4" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity(t1, driver, laps, 1, miss);
-                    }
-                    case "SH 6" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity(t1, driver, laps, 4, miss);
-                    }
-                    case "SW 4" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity(t1, driver, laps, 2, miss);
-                    }
-                    case "SW 6" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity(t1, driver, laps, 5, miss);
-                    }
-                    case "BD Hit 1" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity(t1, driver, laps, 3, miss);
-                    }
-                    case "BD Wave 1" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity(t1, driver, laps, 6, miss);
-                    }
+                    case "Six-Point Footwork Sequential" -> activity(t1, driver, laps, 1, miss, 3, 0);
+                    case "Six-Point Footwork Random" -> activity(t1, driver, laps, 4, miss, 3, 0);
+                    case "RH 4" -> activity(t1, driver, laps, 2, miss, 3, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 5, miss, 3, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 3, miss, 3, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 6, miss, 3, 0);
+                    case "SH 4" -> activity(t1, driver, laps, 1, miss, 3, 2);
+                    case "SH 6" -> activity(t1, driver, laps, 4, miss, 3, 2);
+                    case "SW 4" -> activity(t1, driver, laps, 2, miss, 3, 2);
+                    case "SW 6" -> activity(t1, driver, laps, 5, miss, 3, 2);
+                    case "BD Hit 1" -> activity(t1, driver, laps, 3, miss, 3, 2);
+                    case "BD Wave 1" -> activity(t1, driver, laps, 6, miss, 3, 2);
                 }
             }
             case "School Fitness" -> {
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[4]")).click();
                 switch (s1) {
-                    case "RH 4" -> activity(t1, driver, laps, 1, miss);
-                    case "RH 6" -> activity(t1, driver, laps, 4, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 2, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 5, miss);
-                    case "SH 4" -> activity(t1, driver, laps, 3, miss);
-                    case "SH 6" -> activity(t1, driver, laps, 6, miss);
-                    case "SW 4" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 3, miss);
-                    }
-                    case "SW 6" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 6, miss);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1, miss, 4, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 4, miss, 4, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 2, miss, 4, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 5, miss, 4, 0);
+                    case "SH 4" -> activity(t1, driver, laps, 3, miss, 4, 0);
+                    case "SH 6" -> activity(t1, driver, laps, 6, miss, 4, 0);
+                    case "SW 4" -> activity(t1, driver, laps, 3, miss, 4, 1);
+                    case "SW 6" -> activity(t1, driver, laps, 6, miss, 4, 1);
                 }
             }
             case "Soccer" -> {
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[5]")).click();
                 switch (s1) {
-                    case "RH 4" -> activity(t1, driver, laps, 1, miss);
-                    case "RH 6" -> activity(t1, driver, laps, 4, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 2, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 5, miss);
-                    case "SH 4" -> activity(t1, driver, laps, 3, miss);
-                    case "SH 6" -> activity(t1, driver, laps, 6, miss);
-                    case "SW 4" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 3, miss);
-                    }
-                    case "SW 6" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 6, miss);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1, miss, 5, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 4, miss, 5, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 2, miss, 5, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 5, miss, 5, 0);
+                    case "SH 4" -> activity(t1, driver, laps, 3, miss, 5, 0);
+                    case "SH 6" -> activity(t1, driver, laps, 6, miss, 5, 0);
+                    case "SW 4" -> activity(t1, driver, laps, 3, miss, 5, 1);
+                    case "SW 6" -> activity(t1, driver, laps, 6, miss, 5, 1);
                 }
             }
             case "Physiotherapy" -> {
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[6]")).click();
                 switch (s1) {
-                    case "PT Sequential Laps" -> activity2(driver, laps, 1);
-                    case "RH 6" -> activity(t1, driver, laps, 4, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 2, miss);
-                    case "SH 6" -> activity(t1, driver, laps, 5, miss);
-                    case "SW 6" -> activity(t1, driver, laps, 3, miss);
-                    case "Sequential Circle Hit 4" -> activity(t1, driver, laps, 6, miss);
-                    case "Sequential Circle Wave 4" -> {
-                        scroll(driver);
-                        activity2(driver, laps, 2);
-                    }
-                    case "Sequential Circle Hit 6" -> {
-                        scroll(driver);
-                        activity2(driver, laps, 6);
-                    }
-                    case "Sequential Circle Wave 6" -> {
-                        scroll(driver);
-                        activity2(driver,laps,3);
-                    }
-                    case "T Test" -> {
-                        scroll(driver);
-                        activity2(driver, laps, 7);
-                    }
-                    case "3 Cone Wave" -> {
-                        scroll(driver);
-                        activity2(driver, laps, 4);
-                    }
-                    case "10 Meter" -> {
-                        scroll(driver);
-                        activity2(driver, laps, 8);
-                    }
-                    case "SEMO Wave" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity2(driver, laps, 2);
-                    }
-                    case "Pod Colour 4" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity2(driver, laps, 5);
-                    }
-                    case "Pod Colour 6" -> {
-                        scroll(driver);
-                        scroll(driver);
-                        activity2(driver, laps, 3);
-                    }
-                    default -> {
-                        // Handle any case where no match occurs
-                    }
+                    case "PT Sequential Laps" -> activity2(driver, laps, 1, 6, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 4, miss, 6, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 2, miss, 6, 0);
+                    case "SH 6" -> activity(t1, driver, laps, 5, miss, 6, 0);
+                    case "SW 6" -> activity(t1, driver, laps, 3, miss, 6, 0);
+                    case "Sequential Circle Hit 4" -> activity(t1, driver, laps, 6, miss, 6, 0);
+                    case "Sequential Circle Wave 4" -> activity2(driver, laps, 2, 6, 1);
+                    case "Sequential Circle Hit 6" -> activity2(driver, laps, 6, 6, 1);
+                    case "Sequential Circle Wave 6" -> activity2(driver,laps,3, 6, 1);
+                    case "T Test" -> activity2(driver, laps, 7, 6, 1);
+                    case "3 Cone Wave" -> activity2(driver, laps, 4, 6, 1);
+                    case "10 Meter" -> activity2(driver, laps, 8, 6, 1);
+                    case "SEMO Wave" -> activity2(driver, laps, 2, 6, 2);
+                    case "Pod Colour 4" -> activity2(driver, laps, 5, 6, 2);
+                    case "Pod Colour 6" -> activity2(driver, laps, 3, 6, 2);
                 }
-
             }
             case "Military Training" -> {
                 driver.findElement(AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
                 ));
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[1]")).click();
                 switch (s1) {
-                    case "RH 4" -> activity(t1, driver, laps, 1, miss);
-                    case "RH 6" -> activity(t1, driver, laps, 4, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 2, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 5, miss);
-                    case "SH 4" -> activity(t1, driver, laps, 3, miss);
-                    case "SH 6" -> activity(t1, driver, laps, 6, miss);
-                    case "SW 4" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 3, miss);
-                    }
-                    case "SW 6" -> {
-                        scroll(driver);
-                        activity(t1, driver, laps, 6, miss);
-                    }
+                    case "RH 4" -> activity(t1, driver, laps, 1, miss, 1, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 4, miss, 1, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 2, miss, 1, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 5, miss, 1, 0);
+                    case "SH 4" -> activity(t1, driver, laps, 3, miss, 1, 0);
+                    case "SH 6" -> activity(t1, driver, laps, 6, miss, 1, 0);
+                    case "SW 4" -> activity(t1, driver, laps, 3, miss, 1, 1);
+                    case "SW 6" -> activity(t1, driver, laps, 6, miss, 1, 1);
                 }
             }
             case "Boxing" -> {
                 driver.findElement(AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
                 ));
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[2]")).click();
                 switch (s1) {
-                    case "SH 6" -> activity(t1, driver, laps, 1, miss);
-                    case "SH 4" -> activity(t1, driver, laps, 3, miss);
-                    case "RH 6" -> activity(t1, driver, laps, 2, miss);
-                    case "RH 4" -> activity(t1, driver, laps, 4, miss);
+                    case "SH 6" -> activity(t1, driver, laps, 1, miss, 2, 0);
+                    case "SH 4" -> activity(t1, driver, laps, 3, miss, 2, 0);
+                    case "RH 6" -> activity(t1, driver, laps, 2, miss, 2, 0);
+                    case "RH 4" -> activity(t1, driver, laps, 4, miss, 2, 0);
                 }
             }
             case "Auditory Reflex Training" -> {
                 driver.findElement(AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
                 ));
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[3]")).click();
                 switch (s1) {
-                    case "SW 4" -> activity(t1, driver, laps, 1, miss);
-                    case "SW 6" -> activity(t1, driver, laps, 3, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 2, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 4, miss);
+                    case "SW 4" -> activity(t1, driver, laps, 1, miss, 3, 0);
+                    case "SW 6" -> activity(t1, driver, laps, 3, miss, 3, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 2, miss, 3, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 4, miss, 3, 0);
                 }
             }
             case "Audiblaze Reflex Training" -> {
                 driver.findElement(AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
                 ));
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[4]")).click();
                 switch (s1) {
-                    case "SW 4" -> activity(t1, driver, laps, 1, miss);
-                    case "SW 6" -> activity(t1, driver, laps, 3, miss);
-                    case "RW 4" -> activity(t1, driver, laps, 2, miss);
-                    case "RW 6" -> activity(t1, driver, laps, 4, miss);
+                    case "SW 4" -> activity(t1, driver, laps, 1, miss, 4, 0);
+                    case "SW 6" -> activity(t1, driver, laps, 3, miss, 4, 0);
+                    case "RW 4" -> activity(t1, driver, laps, 2, miss, 4, 0);
+                    case "RW 6" -> activity(t1, driver, laps, 4, miss, 4, 0);
                 }
             }
             case "New Activities" -> {
                 driver.findElement(AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
                 ));
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[5]")).click();
                 switch (s1) {
-                    case "FH 6" -> activity(t1, driver, laps, 1, miss);
-                    case "FW 6" -> activity(t1, driver, laps, 4, miss);
-                    case "OH 6" -> activity(t1, driver, laps, 2, miss);
-                    case "OW 6" -> activity(t1, driver, laps, 5, miss);
-                    case "Back to home Hit 6" -> activity(t1, driver, laps, 3, miss);
+                    case "FH 6" -> activity(t1, driver, laps, 1, miss, 5, 0);
+                    case "FW 6" -> activity(t1, driver, laps, 4, miss, 5, 0);
+                    case "OH 6" -> activity(t1, driver, laps, 2, miss, 5, 0);
+                    case "OW 6" -> activity(t1, driver, laps, 5, miss, 5, 0);
+                    case "Back to home Hit 6" -> activity(t1, driver, laps, 3, miss, 5, 0);
                 }
             }
             case "Table Tennis" -> {
                 driver.findElement(AppiumBy.androidUIAutomator(
                         "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
                 ));
-                driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[6]")).click();
                 if (s1.equals("X Drill")) {
-                    driver.findElement(By.xpath("//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/activityImage\"]")).click();
-                    activity2(driver, laps, 1);
+                    activity2(driver, laps, 1, 6, 0);
                 }
             }
         }
     }
 
-    public static void activity(int time, AndroidDriver driver, int laps, int index1, int miss) throws InterruptedException {
+    public static void activity(int time, AndroidDriver driver, int laps, int index2, int miss, int index, int index1) {
 
-        driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id='com.dashpod.sportsandfitness:id/rv']/android.view.ViewGroup[" + index1 + "]")).click();
+        //Want the test case
+        String opt = JOptionPane.showInputDialog("Do you want this test case : ");
+        if (opt.equalsIgnoreCase("N")) {
+            return;
+        }
+        driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[" + index + "]")).click();
+
+        System.out.println("Scroll : " + index1);
+        if (index1 == 1) scroll(driver);
+        if (index1 == 2) {
+            scroll(driver);
+            scroll(driver);
+        }
+
+        driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id='com.dashpod.sportsandfitness:id/rv']/android.view.ViewGroup[" + index2 + "]")).click();
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
         ));
         WebElement time1 = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.dashpod.sportsandfitness:id/list_settings\"]/android.view.ViewGroup[1]/android.widget.LinearLayout/android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/text_count\"][1]"));
         int timeexist = Integer.parseInt(time1.getText());
         if (time > timeexist) {
-            for (int k = time/5; k<timeexist/5; k++) {
+            for (int k = time / 5; k < timeexist / 5; k++) {
                 driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/text_plus\"])[1]")).click();
             }
         } else if (time < timeexist) {
-            for (int k = time/5; k<timeexist/5; k++){
+            for (int k = time / 5; k < timeexist / 5; k++) {
                 driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/text_minus\"])[1]")).click();
             }
         } else {
@@ -363,17 +267,17 @@ public class AutomateActivityTests {
             for (int j = laps; j < lapexist; j++) {
                 driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/text_minus\"])[2]")).click();
             }
-        }else {
+        } else {
 
         }
         WebElement miss1 = driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id=\"com.dashpod.sportsandfitness:id/list_settings\"]/android.view.ViewGroup[3]/android.widget.LinearLayout/android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/text_count\"][1]"));
         int missexist = Integer.parseInt(miss1.getText());
         if (miss > missexist) {
-            for (int k = missexist; k<miss; k++) {
+            for (int k = missexist; k < miss; k++) {
                 driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/text_plus\"])[3]")).click();
             }
         } else if (miss < missexist) {
-            for (int k = miss; k<missexist; k++){
+            for (int k = miss; k < missexist; k++) {
                 driver.findElement(By.xpath("(//android.widget.TextView[@resource-id=\"com.dashpod.sportsandfitness:id/text_minus\"])[3]")).click();
             }
         } else {
@@ -395,18 +299,40 @@ public class AutomateActivityTests {
         for (WebElement row : rows) {
             // Find all cells within the row (assuming cells are TextView)
             List<WebElement> cells = row.findElements(By.className("android.widget.TextView"));
-            WebElement lastCell = cells.get(cells.size() - 1);
-            int poor = (int)Double.parseDouble(lastCell.getText());
+            WebElement lastCell = cells.getLast();
+            int poor = (int) Double.parseDouble(lastCell.getText());
 
-            driver.findElement(By.xpath("//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/toolbarIcon\"]")).click();
-            Assert.assertEquals(miss,poor);
+            driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc=\"Search\"]")).click();
+
+            String prob = JOptionPane.showInputDialog("Errors : ");
+            if (prob.equalsIgnoreCase("2L")) {
+                Assert.assertEquals(1,2);
+            } else if (prob.equalsIgnoreCase("D")) {
+                Assert.assertEquals(1,2);
+            }
+
+            Assert.assertEquals(miss, poor);
         }
-
     }
 
-    public static void activity2(AndroidDriver driver, int laps, int index1) throws InterruptedException {
+    public static void activity2(AndroidDriver driver, int laps, int index2, int index, int index1) throws InterruptedException {
 
-        driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id='com.dashpod.sportsandfitness:id/rv']/android.view.ViewGroup[" + index1 + "]")).click();
+        //Want the test case
+        String opt = JOptionPane.showInputDialog("Do you want this test case : ");
+        if (opt.equalsIgnoreCase("N")) {
+            return;
+        }
+        driver.findElement(By.xpath("(//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/imageView11\"])[" + index + "]")).click();
+        if (index1 == 0) {
+
+        } else if (index1 == 1) {
+            scroll(driver);
+        } else if (index1 == 2) {
+            scroll(driver);
+            scroll(driver);
+        }
+
+        driver.findElement(By.xpath("//androidx.recyclerview.widget.RecyclerView[@resource-id='com.dashpod.sportsandfitness:id/rv']/android.view.ViewGroup[" + index2 + "]")).click();
         driver.findElement(AppiumBy.androidUIAutomator(
                 "new UiScrollable(new UiSelector().scrollable(true)).scrollToEnd(10)"
         ));
@@ -428,8 +354,15 @@ public class AutomateActivityTests {
         WebElement close = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btndialog\"]")));
         close.click();
         driver.findElement(By.xpath("//android.widget.ImageView[@resource-id=\"com.dashpod.sportsandfitness:id/toolbarIcon\"]")).click();
-        Thread.sleep(1000);
 
+        String prob = JOptionPane.showInputDialog("Errors : ");
+        if (prob.equalsIgnoreCase("2L")) {
+            Assert.assertEquals(1,2);
+        } else if (prob.equalsIgnoreCase("D")) {
+            Assert.assertEquals(1,2);
+        }
+
+        Thread.sleep(1000);
     }
 
     public static void scroll(AndroidDriver driver) {
