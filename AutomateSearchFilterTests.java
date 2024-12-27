@@ -40,8 +40,11 @@ public class AutomateSearchFilterTests {
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]"))).click();
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btn_login\"]"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.EditText[@resource-id=\"com.dashpod.sportsandfitness:id/loginuser\"]"))).sendKeys("Karthik");
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.EditText[@resource-id=\"com.dashpod.sportsandfitness:id/loginpassword\"]"))).sendKeys("Karthikeya@123");
+
+        //Enter your username
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.EditText[@resource-id=\"com.dashpod.sportsandfitness:id/loginuser\"]"))).sendKeys("Your_Username");
+        //Enter your password
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.EditText[@resource-id=\"com.dashpod.sportsandfitness:id/loginpassword\"]"))).sendKeys("Your_Password");
         driver.findElement(By.xpath("//android.widget.Button[@resource-id=\"com.dashpod.sportsandfitness:id/btn_login3\"]")).click();
 
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//android.widget.FrameLayout[@content-desc=\"Search\"]"))).click();
