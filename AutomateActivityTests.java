@@ -49,12 +49,6 @@ public class AutomateActivityTests {
                 .skip(1) // Skip the header row
                 .map(line -> DynamicTest.dynamicTest("Activity test for " + line[0] + " " + line[1],
                         () -> {
-                            /*// Skip the third test (index 0 to 19 based on csv file index)
-                            if (lines.indexOf(line) <= 1 && lines.indexOf(line) <= 21) {
-                                System.out.println("Skipping test for " + line[0] + " " + line[1]);
-                                return; // Skip this test
-                            }
-                            //End of skip*/
                             testActivityProcess(
                                     line[0], line[1], line[2], line[3], line[4]
                             );
